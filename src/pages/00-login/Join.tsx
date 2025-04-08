@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import logoImg from "@assets/imgs/logo/logo.png";
 import { Link } from 'react-router-dom';
-import { Tooltip } from "antd";
 import {
   validateEmail,
   validatePhoneNumber,
