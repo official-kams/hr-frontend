@@ -1,0 +1,177 @@
+#root{
+  width:100%;
+  height:100vh;
+  .main-layout{
+    position: relative;
+    width:100%;
+    height:100%;
+    background:linear-gradient(#F7F7F7, #E0E0E0);
+  }
+  // ===================================
+  // sideBar ---------------------------
+  #sideBar{
+    position:fixed;
+    z-index:1;
+    top:0;
+    left:0;
+    width:300px;
+    height:100%;
+    transition: width 0.3s ease-out;
+    padding:40px 10px;
+    &.close{
+      width:76px;
+      .sidebar-header{
+        button{
+          img{
+            rotate:0deg;
+            margin-left: 2px;
+          }
+        }
+      }
+    }
+    //common css
+    img{
+      width:36px;
+      height:36px;
+    }
+
+    .sidebar-header{
+      position:relative;
+      height:90px;
+      padding:0 10px;
+      button{
+        position:absolute;
+        z-index:2;
+        right:-28px;
+        bottom:7px;
+        width:36px;
+        height:36px;
+        background:#FFF;
+        box-shadow:0 0 5px rgba(0, 0, 0, .25);
+        border-radius: 100%;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        img{
+          width:16px;
+          height:16px;
+          rotate:180deg;
+        }
+      }
+    }
+
+    .menu{
+      width:100%;
+      & + .menu{
+        margin-top: 10px;
+      }
+
+      &-depth1{
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        padding:10px;
+        border-radius: 15px;
+        .i-name{
+          display:flex;
+          align-items: center;
+          gap:10px;
+          color:#000;
+          span{
+            white-space: nowrap;
+          }
+        }
+        &.on{
+          background:#FFF;
+        }
+      }
+
+      &-depth2{
+        padding:15px 0;
+        gap:10px;
+        ul{
+          position:relative;
+          width:100%;
+          display:flex;
+          flex-direction: column;
+          gap:5px;
+          &::before{
+            content:'';
+            position:absolute;
+            left:22px;
+            z-index:1;
+            width:1px;
+            height:100%;
+            background:#C2C2C2;
+          }
+          li{
+            position:relative;
+            z-index:2;
+            width:100%;
+            height:40px;
+            display:flex;
+            align-items: center;
+            gap:20px;
+            padding-left: 20px;
+            &::before{
+              content:'';
+              display:block;
+              width:6px;
+              height:6px;
+              border-radius: 100%;
+            }
+            a{
+              line-height:40px;
+              padding:0 15px;
+              border-radius: 15px;
+              width:calc(100% - 26px);
+              height:100%;
+              color:#000;
+            }
+            &:hover{
+              a{
+                background:rgba(255, 255, 255, .3);
+              }
+            }
+            &.on{
+              &::before{
+                background:#6E6E6E;
+              }
+              a{
+                background:rgba(255, 255, 255, .5);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .sidebar-footer{
+      width:100%;
+      position:absolute;
+      bottom:40px;
+      left:10px;
+      .menu{
+
+      }
+    }
+  }
+
+  // ===================================
+  // main ------------------------------
+  #main{
+    position:fixed;
+    top:20px;
+    right:20px;
+    z-index:0;
+    width:calc(100% - 320px);
+    height:calc(100% - 40px);
+    border-radius: 30px;
+    background:#FFFFFF;
+    transition: width 0.3s ease-out;
+    padding:20px;
+    &.close{
+      width:calc(100% - 96px);
+    }
+  }
+}

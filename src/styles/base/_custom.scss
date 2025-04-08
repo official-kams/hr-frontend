@@ -1,0 +1,19 @@
+.ant-switch-checked {
+  background-color: #34B4DA !important;
+}
+
+.form-control{
+  label{
+    position:relative;
+    &.required{
+      &::after{
+        position:absolute;
+        right:-10px;
+        top:-5px;
+        content:'*';
+        display:block;
+        color:#FF5E5E;
+      }
+    }
+  }
+}

@@ -1,0 +1,130 @@
+@mixin auth-font {
+  font-family: "PaperLogy", Arial, sans-serif;
+  letter-spacing: -0.3px;
+}
+
+.auth-layout{
+  background:#FFF;
+  width:100%;
+  height:100vh;
+  padding:20px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  .auth-form{
+    width:520px;
+    height:100%;
+    padding:20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap:30px;
+    .form-header{
+      img{
+        width:50px;
+        height:50px;
+        margin-bottom: 40px;
+      }
+      h2{
+        @include auth-font;
+        font-size:30px;
+        font-weight:700;
+        margin-bottom: 10px;
+      }
+      span{
+        @include auth-font;
+        font-size:20px;
+        color:#999;
+      }
+    }
+    .form-body{
+      display:flex;
+      flex-direction:column;
+      min-height:160px;
+      gap:20px;
+      .flex{
+        display:flex;
+        gap:20px;
+      }
+      label{
+        display:inline-block;
+        @include auth-font;
+        font-size:15px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      input{
+        width:100%;
+        height:50px;
+        font-size:16px;
+        &::placeholder{
+          @include auth-font;
+        }
+      }
+      .invalid-text{
+        color:#FF416C;
+        font-size:14px;
+        display:inline-block;
+        margin-top: 5px;
+      }
+      .switch{
+        display:flex;
+        align-items: center;
+        gap:10px;
+        @include auth-font;
+        font-weight: 500;
+      }
+      .login-btn{
+        margin-top: 40px;
+        width:100%;
+        height:50px;
+        border-radius: 7px;
+        @include auth-font;
+        font-weight: 600;
+        background:#000;
+        color:#FFF;
+      }
+
+      .input-box{
+        position:relative;
+        input{
+          padding-right: 40px;
+        }
+        button{
+          position:absolute;
+          z-index:1;
+          right:12px;
+          top:13px;
+          width:24px;
+          height:24px;
+          background-image: url('../../assets/imgs/icons/pwHide.png');
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          &.hide{
+            background-image: url('../../assets/imgs/icons/pwShow.png');
+          }
+        }
+      }
+    }
+    .form-footer{
+      @include auth-font;
+      text-align: center;
+      a{
+        @include auth-font;
+        font-weight: 600;
+        text-decoration: underline;
+        color:#000;
+      }
+    }
+  }
+  .auth-img{
+    width:calc(100% - 540px);
+    height:100%;
+    border-radius:20px;
+    background-image: url('../../assets/imgs/logo/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+}

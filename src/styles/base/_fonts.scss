@@ -1,0 +1,129 @@
+$fontPath : '/assets/fonts/';
+
+// 기본 Pretendard -----------------------------------------------------------------------
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 900;
+  font-display: swap;
+  src: local('Pretendard Black'), url(#{$fontPath}/Pretendard-Black.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 800;
+  font-display: swap;
+  src: local('Pretendard ExtraBold'), url(#{$fontPath}Pretendard-ExtraBold.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 700;
+  font-display: swap;
+  src: local('Pretendard Bold'), url(#{$fontPath}Pretendard-Bold.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 600;
+  font-display: swap;
+  src: local('Pretendard SemiBold'), url(#{$fontPath}Pretendard-SemiBold.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 500;
+  font-display: swap;
+  src: local('Pretendard Medium'), url(#{$fontPath}Pretendard-Medium.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 400;
+  font-display: swap;
+  src: local('Pretendard Regular'), url(#{$fontPath}Pretendard-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 300;
+  font-display: swap;
+  src: local('Pretendard Light'), url(#{$fontPath}Pretendard-Light.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 200;
+  font-display: swap;
+  src: local('Pretendard ExtraLight'), url(#{$fontPath}Pretendard-ExtraLight.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 100;
+  font-display: swap;
+  src: local('Pretendard Thin'), url(#{$fontPath}Pretendard-Thin.woff) format('woff');
+}
+
+// 일부 PaperLogy -----------------------------------------------------------------------
+@font-face {
+  font-family: 'Paperlogy';
+  font-weight: 100;
+  font-display: auto;
+  src: local('PaperLogy'), url(#{$fontPath}/Paperlogy-1Thin.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  font-weight: 200;
+  font-display: auto;
+  src: local('PaperLogy'), url(#{$fontPath}/Paperlogy-2ExtraLight.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  font-weight: 300;
+  font-display: auto;
+  src: local('PaperLogy'), url(#{$fontPath}/Paperlogy-3Light.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  font-weight: 400;
+  font-display: auto;
+  src: local('PaperLogy'), url(#{$fontPath}/Paperlogy-4Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  font-weight: 500;
+  font-display: auto;
+  src: local('PaperLogy'), url(#{$fontPath}/Paperlogy-5Medium.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  font-weight: 600;
+  font-display: auto;
+  src: local('PaperLogy'), url(#{$fontPath}/Paperlogy-6SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  font-weight: 700;
+  font-display: auto;
+  src: local('PaperLogy'), url(#{$fontPath}/Paperlogy-7Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  font-weight: 800;
+  font-display: auto;
+  src: local('PaperLogy'), url(#{$fontPath}/Paperlogy-8ExtraBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  font-weight: 900;
+  font-display: auto;
+  src: local('PaperLogy'), url(#{$fontPath}/Paperlogy-9Black.ttf) format('truetype');
+}

@@ -1,0 +1,93 @@
+// action === 확인 / 취소 기능 O
+.alertAction{
+  .MuiPaper-root{
+    border-radius: 25px;
+    min-width:400px;
+    padding:15px 30px;
+  }
+  .alert{
+    &-header{
+      display:flex;
+      font-family: 'Pretendard';
+      font-size:22px;
+      font-weight: 700;
+      padding:15px 0 0;
+      &::before{
+        content:'i';
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        width:32px;
+        height:32px;
+        border-radius: 100%;
+        background:#0270EE;
+        color:#FFF;
+        font-size:20px;
+        font-weight: 900;
+        margin-right: 15px;
+      }
+    }
+    &-body{
+      color:#333;
+      padding:15px 10px 0 25px;
+      font-size:17px;
+      font-family: 'Pretendard';
+    }
+    &-footer{
+      border-top:1px solid #CCC;
+      padding:10px 0 0;
+      button{
+        font-size:17px;
+        font-weight: 600;
+        &.cancel{
+          color:#333;
+        }
+      }
+    }
+  }
+}
+
+// 3s === 3초 뒤 사라지는 alert
+.alert3s{
+  display:flex;
+  position:absolute;
+  z-index:9999;
+  top:50%;
+  transform:translateY(-50%);
+  left:0;
+  right:0;
+  margin:auto;
+  color:#000;
+  background:#FFFFFF;
+  font-size:18px;
+  letter-spacing: -.5px;
+  max-width:700px;
+  min-height:60px;
+  align-items: center;
+  padding:10px 0 10px 30px;
+  border-radius: 5px;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  white-space:pre-line;
+  border:1px solid #CCC;
+  svg{
+    margin-right: 10px;
+    color:#FF416C !important;
+  }
+
+  &.visible{
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.primary{
+    svg{
+      color:#1565C0 !important;
+    }
+  }
+
+  @media screen and (max-width:900px){
+    max-width:90%;
+  }
+}
