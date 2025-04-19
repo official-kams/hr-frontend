@@ -18,7 +18,6 @@ export const get = async <T = any>(path: string, opts?: Record<string, any>): Pr
         return {
             data: response.data,
             status: response.status,
-            headers: response.headers,
         };
     } catch (error: any) {
         console.error("GET 요청 에러:", error);
@@ -38,7 +37,6 @@ export const post = async <T = any>(path: string, payload?: any): Promise<ApiRes
         return {
             data: response.data,
             status: response.status,
-            headers: response.headers,
         };
     } catch (error: any) {
         console.error("POST 요청 에러:", error);

@@ -6,6 +6,7 @@ import {
   validateEmail,
   validatePassword,
 } from "@utils/regex";
+import * as gateway from "@components/gateway/Gateway";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Login = () => {
     password: "",
   });
 
-  const Login = () => {
+  const Login = async () => {
     const newErrors: typeof errors = {
       email: "",
       password: "",
@@ -44,7 +45,28 @@ const Login = () => {
     const hasError = Object.values(newErrors).some((msg) => msg !== "");
     if (!hasError) {
       // 로그인 로직
-      navigate('/home');
+      const payload = {
+        userEmail: email,
+        password: password,
+      }
+
+      try {
+        const response = await gateway.post("/auth/login", payload);
+
+        if (response.status === 200) {
+          if (response.data.code === "0000") {
+            localStorage.setItem('accessToken', response.data.accessToken);
+            localStorage.setItem('refreshToken', response.data.refreshToken);
+
+            navigate('/home');
+          } else if (response.data.code === "9998") {
+            alert("아이디와 비밀번호를 확인 해주세요.");
+          }
+        }
+      } catch (e) {
+        console.error(e);
+        alert("로그인 중 오류가 발생했습니다.");
+      }
     }
   }
 

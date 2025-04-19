@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import logoImg from "@assets/imgs/logo/logo.png";
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {
   validateEmail,
   validatePhoneNumber,
@@ -8,8 +8,11 @@ import {
   validatePassword,
   validatePasswordMatch
 } from "@utils/regex";
+import * as gateway from "@components/gateway/Gateway";
 
 const Join = () => {
+  const navigate = useNavigate();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -29,7 +32,7 @@ const Join = () => {
     password2: ""
   });
 
-  const SignUp = () => {
+  const SignUp = async () => {
     const newErrors: typeof errors = {
       firstName: "",
       lastName: "",
@@ -67,9 +70,54 @@ const Join = () => {
 
     // 모든 항목이 통과했는지 확인
     const hasError = Object.values(newErrors).some((msg) => msg !== "");
+
     if (!hasError) {
       // 회원가입 처리 로직
+      const payload = {
+        userName: firstName + lastName,
+        phoneNumber: phoneNumber,
+        userEmail: email,
+        userPassword: password,
+      }
 
+      try {
+        const response = await gateway.post("/auth/register", payload);
+
+        if (response.data.code === "0000") {
+          alert("회원가입에 성공하였습니다.");
+          navigate("/");
+        }
+      } catch (e) {
+        alert("회원가입 중 오류가 발생하였습니다.");
+        console.error(e);
+      }
+    }
+  }
+
+  const existsUserEmail = async () => {
+    const payload = {
+      userEmail: email
+    }
+
+    try {
+      const response = await gateway.post("/auth/existsUserEmail", payload);
+
+      if (response.data) {
+        setErrors(prev => ({
+          ...prev,
+          email: "중복된 이메일입니다."
+        }));
+      } else {
+        setErrors(prev => ({
+          ...prev,
+          email: ""
+        }));
+      }
+    } catch (e) {
+      setErrors(prev => ({
+        ...prev,
+        email: "이메일 확인 중 오류가 발생했습니다."
+      }));
     }
   }
 
@@ -113,7 +161,11 @@ const Join = () => {
         </div>
         <div className="form-control">
           <label className="required">E-mail</label>
-          <input value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onBlur={existsUserEmail}
+          />
           {errors.email && <span className="invalid-text">{errors.email}</span>}
         </div>
         <div className="form-control">

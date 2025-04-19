@@ -1,7 +1,10 @@
 import React, { Dispatch, useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import { AnimatePresence, motion } from "framer-motion";
 import { Tooltip } from "antd";
+
+import * as gateway from "@components/gateway/Gateway";
+
 import homeImg from "@assets/imgs/logo/logo.png";
 import openBtn from "@assets/imgs/layout/openbtn.png";
 import menuImg01 from "@assets/imgs/layout/menu01.png";
@@ -21,6 +24,7 @@ interface PropsType {
 export default function SideBar({ menuState, setMenuState }: PropsType) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const menuList = [
     {
       depth1Icon: menuImg01,
@@ -89,6 +93,20 @@ export default function SideBar({ menuState, setMenuState }: PropsType) {
     }
   }, [menuState]);
 
+  const logout = async () => {
+    const accessToken = localStorage.getItem("accessToken");
+
+    try {
+      await gateway.post("/auth/logout", {accessToken});
+    } catch (e) {
+      console.error(e);
+    } finally {
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      navigate("/");
+    }
+  }
+
   return (
     <article id="sideBar" className={menuState ? "open" : "close"}>
       <div className="sidebar-header">
@@ -150,7 +168,7 @@ export default function SideBar({ menuState, setMenuState }: PropsType) {
       <div className="sidebar-footer">
         <div className="menu">
           <div className="menu-depth1">
-            <Link to="/" className="i-name">
+            <Link to="#" onClick={logout} className="i-name">
               {menuState ?
                 <img src={logoutImg} alt="로그아웃" />
                 :

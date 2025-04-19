@@ -4,7 +4,6 @@ import {InternalAxiosRequestConfig} from "axios";
 export interface ApiResponse<T = any> {
     data: T | null;
     status: number;
-    headers?: any;
 }
 
 // 리프레시 토큰 응답 타입 정의
